@@ -2,11 +2,14 @@
 
 #app {
   margin: 0 auto;
+  padding: 2em;
 
   font-weight: normal;
   display: flex;
   flex-flow: column;
   height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 a,
