@@ -2,7 +2,7 @@
 import { DragCol } from "vue-resizer";
 import VueMonacoEditor from '@guolao/vue-monaco-editor'
 import { computed, ref, watch } from "vue";
-import { useDebounce, useStorage } from "@vueuse/core";
+import { useClipboard, useDebounce, useStorage } from "@vueuse/core";
 
 const url = useStorage('url', 'https://vdo.ninja/?director=' + crypto.randomUUID())
 const debouncedUrl = useDebounce(url, 500)
@@ -81,10 +81,13 @@ const MONACO_EDITOR_OPTIONS = {
   formatOnType: true,
   formatOnPaste: true,
 }
+
+const { copy } = useClipboard({ source: url })
 </script>
 
 <template>
   <header>
+    <button @click="() => copy(url)" class="copy">📋</button>
     <label for="url">
       VDO.Ninja URL: 
     </label>
